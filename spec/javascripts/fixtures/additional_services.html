@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="foo_service">
+
+    </div>
+
+    <div id="bar_service">
+
+    </div>
+    <script>
+        function FooService(){
+            this.id = 'foo_service';
+            this.mainWrapp = $('#foo_service');
+        }
+
+        FooService.prototype = Object.create(ServiceInterface.prototype);
+        FooService.prototype.constructor = FooService;
+
+        FooService.prototype.changeCurrency = function(currency){ this.currency = currency; };
+        FooService.prototype.toggleService = function(bool){ bool ? this.mainWrapp.show() : this.mainWrapp.hide(); };
+
+        function BarService(){
+            this.id = 'bar_service';
+            this.mainWrapp = $('#bar_service');
+        }
+
+        BarService.prototype = Object.create(ServiceInterface.prototype);
+        BarService.prototype.constructor = BarService;
+
+        BarService.prototype.changeCurrency = function(currency){ this.currency = currency; };
+        BarService.prototype.toggleService = function(bool){ bool ? this.mainWrapp.show() : this.mainWrapp.hide(); };
+    </script>
+</body>
+</html>

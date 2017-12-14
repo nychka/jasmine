@@ -681,3 +681,62 @@ function JcbActivatedState()
         });
     };
 };
+
+function CardsPickerDefault(component)
+{
+    this.name = 'cards_picker_default';
+    this.options = {};
+    this.context = component.getContext();
+
+    this.handle = function(context)
+    {
+        var context = component.getContext();
+        var card = this.options['card'];
+        context.card_number_0.val(card.get('first_token')).prop('disabled', true);
+        context.card_number_1.prop('disabled', true);
+        context.card_number_2.prop('disabled', true);
+        context.card_number_3.val(card.get('last_token')).prop('disabled', true);
+        context.card_date_month.prop('disabled', true);
+        context.card_date_year.prop('disabled', true);
+    };
+
+    this.setOption = function(option, data, type)
+    {
+        if(! (data instanceof type)) throw new TypeError(type + ' must be given! ' + typeof data + ' given instead');
+
+        this.options[option] = data;
+        this.trigger();
+    };
+
+    this.trigger = function()
+    {
+        this.handle(this.context);
+    };
+};
+
+function CardsPickerOtp(component)
+{
+    this.name = 'cards_picker_otp';
+    this.context = component.getContext();
+    this.options = {};
+
+    this.handle = function(context)
+    {
+        var card = this.options['card'];
+        context.card_number_0.val(card.get('first_token')).prop('readonly', true).focus();
+        context.card_number_3.val(card.get('last_token')).prop('readonly', true).focus();
+    };
+
+    this.setOption = function(option, data, type)
+    {
+        if(! (data instanceof type)) throw new TypeError(type + ' must be given! ' + typeof data + ' given instead');
+
+        this.options[option] = data;
+        this.trigger();
+    };
+
+    this.trigger = function()
+    {
+        this.handle(this.context);
+    };
+};

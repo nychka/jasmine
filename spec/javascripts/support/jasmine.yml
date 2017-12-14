@@ -12,6 +12,8 @@
 #
 src_files:
   - public/javascripts/lib/jquery-1.9.1.min.js
+  - public/javascripts/src/price_component.js
+  - public/javascripts/src/hub.js
   - public/javascripts/**/*.js
 
 # stylesheets
